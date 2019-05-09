@@ -1,2 +1,2 @@
 #!/usr/bin/with-contenv bash
-# Add your commands here
+chmod +x /opt/idea/bin/idea.sh

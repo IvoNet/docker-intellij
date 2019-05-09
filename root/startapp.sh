@@ -2,6 +2,6 @@
 # to make sure the application restarts when closed in the browser
 while true;
 do
-  # Your application startup here
-  echo TODO
+  cd /project
+  /opt/idea/bin/idea.sh
 done
