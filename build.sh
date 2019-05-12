@@ -3,8 +3,8 @@ docker_name=ivonet
 image=intellij
 version=2019.1.2
 
-deploy="false"
-#deploy="true"
+deploy=false
+#deploy=true
 versioning=false
 #versioning=true
 
@@ -17,7 +17,7 @@ if [ "$?" -eq 0 ] && [ ${deploy} == "true" ]; then
     docker push $docker_name/${image}:latest
 fi
 
-if [ "$versioning" == "true" ]; then
+if [ "$versioning" = true ]; then
     docker tag $docker_name/${image}:latest $docker_name/${image}:${version}
     if [ "$?" -eq 0 ] && [ ${deploy} == "true" ]; then
         docker push $docker_name/${image}:${version}
