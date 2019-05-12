@@ -14,12 +14,15 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
     echo "Starting new idea config..."
     docker run                                                    \
         -d                                                        \
-        --name $NAME                                               \
+        --name $NAME                                              \
         -p $PORT:32000                                            \
         -p 8080:8080                                              \
-        -v /Users/ivonet/dev/docker-web-gui-apps/intellij/projects:/project                               \
+        -e VNC_DEPTH=32                                           \
+        -e WIDTH=1920                                             \
+        -e HEIGHT=1080                                            \
+        -v /Users/ivonet/dev/docker-intellij/projects:/project    \
         -v "/Users/ivonet/.m2:/root/.m2"                          \
-        -v ${HOME}/.config/ivonet/docker/IntelliJIdea2019.1:/nobody/.IntelliJIdea2019.1 \
+        -v ${HOME}/.config/ivonet/docker/IntelliJIdea2019.1.2:/nobody/.IntelliJIdea2019.1.2 \
         ivonet/intellij
 
     sleep $WAIT

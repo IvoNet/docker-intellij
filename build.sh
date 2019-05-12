@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 docker_name=ivonet
 image=intellij
-version=0.1
+version=2019.1.2
 
 deploy="false"
 #deploy="true"
@@ -10,7 +10,7 @@ versioning=false
 
 #OPTIONS="$OPTIONS --no-cache"
 #OPTIONS="$OPTIONS --force-rm"
-OPTIONS="$OPTIONS --build-arg APP=intellij --build-arg ADMIN_NAME=intellijadmin --build-arg ADMIN_PASSWORD=secret --build-arg USERNAME=ivonet --build-arg PASSWORD=secret"
+OPTIONS="$OPTIONS --build-arg APP=intellij --build-arg USR=ivonet --build-arg PWD=secret"
 
 docker build ${OPTIONS} -t $docker_name/${image}:latest .
 if [ "$?" -eq 0 ] && [ ${deploy} == "true" ]; then
