@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-docker_name=ivonet
+HUB=ivonet
+#HUB=192.168.2.3:5555
 image=intellij
-version=2019.1.2
+version=2019.1.3
 
 deploy=false
 #deploy=true
@@ -12,14 +13,14 @@ versioning=false
 #OPTIONS="$OPTIONS --force-rm"
 OPTIONS="$OPTIONS --build-arg APP=intellij --build-arg USR=ivonet --build-arg PWD=secret"
 
-docker build ${OPTIONS} -t $docker_name/${image}:latest .
+docker build ${OPTIONS} -t $HUB/${image}:latest .
 if [ "$?" -eq 0 ] && [ ${deploy} == "true" ]; then
-    docker push $docker_name/${image}:latest
+    docker push $HUB/${image}:latest
 fi
 
 if [ "$versioning" = true ]; then
-    docker tag $docker_name/${image}:latest $docker_name/${image}:${version}
+    docker tag $HUB/${image}:latest $HUB/${image}:${version}
     if [ "$?" -eq 0 ] && [ ${deploy} == "true" ]; then
-        docker push $docker_name/${image}:${version}
+        docker push $HUB/${image}:${version}
     fi
 fi

@@ -3,7 +3,9 @@ FROM ivonet/ubuntu:18.04 AS builder
 #https://download-cf.jetbrains.com/idea/ideaIU-2019.1.2.tar.gz
 #https://download-cf.jetbrains.com/idea/ideaIU-2019.1.2-jbr11.tar.gz
 #https://download-cf.jetbrains.com/idea/ideaIU-2019.1.2-no-jbr.tar.gz
-RUN /usr/bin/curl -s -L "https://download-cf.jetbrains.com/idea/ideaIU-2019.1.2-no-jbr.tar.gz" | /bin/tar xz -C /opt/ \
+#https://download-cf.jetbrains.com/idea/ideaIU-2019.1.3.tar.gz
+#https://download-cf.jetbrains.com/idea/ideaIU-2019.1.3-no-jbr.tar.gz
+RUN /usr/bin/curl -s -L "https://download-cf.jetbrains.com/idea/ideaIU-2019.1.3-no-jbr.tar.gz" | /bin/tar xz -C /opt/ \
  && mv -v /opt/idea* /opt/idea
 # && rm -rf /opt/idea/jre64
 
