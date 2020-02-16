@@ -2,7 +2,7 @@
 HUB=ivonet
 #HUB=192.168.2.3:5555
 image=intellij
-version=2019.1.3
+version=$(cat VERSION)
 
 deploy=false
 #deploy=true

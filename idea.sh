@@ -17,12 +17,13 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
         --name $NAME                                              \
         -p $PORT:32000                                            \
         -p 8080:8080                                              \
+        -p 5901:5901                                              \
         -e AUTH=${AUTH:-false}                                    \
-        -e WIDTH=1920                                             \
-        -e HEIGHT=1080                                            \
-        -v /Users/ivonet/dev/docker-intellij/:/project            \
-        -v "/Users/ivonet/.m2:/root/.m2"                          \
-        -v /Users/ivonet/.config/ivonet/docker/IntelliJIdea2019.1:/nobody/.IntelliJIdea2019.1 \
+        -e WIDTH=3440                                             \
+        -e HEIGHT=1440                                            \
+        -v ${HOME}/dev/docker-intellij/:/project            \
+        -v "${HOME}/.m2:/root/.m2"                          \
+        -v ${HOME}/.config/ivonet/docker/IntelliJIdea2019.3:/nobody/.IntelliJIdea2019.3 \
         ivonet/intellij
 
     sleep $WAIT
