@@ -16,5 +16,6 @@ docker run                             \
     -e HEIGHT=1080                     \
     -v $(pwd)/:/project                \
     -v "${HOME}/.m2:/root/.m2"   \
-    -v ${HOME}/.config/ivonet/docker/IntelliJIdea2019.3:/nobody/.IntelliJIdea2019.3 \
+    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/cache:/nobody/.cache/JetBrains \
+    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/config:/nobody/.config/JetBrains \
     ${HUB}/intellij

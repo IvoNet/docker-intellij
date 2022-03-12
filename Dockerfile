@@ -8,11 +8,11 @@ FROM ivonet/ubuntu:18.04 AS builder
 #https://download-cf.jetbrains.com/idea/ideaIU-2019.3.2.tar.gz
 
 
-RUN /usr/bin/curl -s -L "https://download-cf.jetbrains.com/idea/ideaIU-2019.3.3.tar.gz" | /bin/tar xz -C /opt/ \
+RUN /usr/bin/curl -s -L "https://download-cdn.jetbrains.com/idea/ideaIU-2021.3.2.tar.gz" | /bin/tar xz -C /opt/ \
  && mv -v /opt/idea* /opt/idea
 # && rm -rf /opt/idea/jre64
 
-FROM ivonet/x11webui:1.0
+FROM ivonet/x11webui:1.2
 
 COPY --from=builder /opt/idea /opt/idea
 
