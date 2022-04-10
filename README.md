@@ -8,24 +8,29 @@ See `run.sh` and `intellij.sh` for examples on how to run the application.
 
 # Exposed Ports
 
-| Port number          | Description                                             |
-| :--------------------| :-------------------------------------------------------|
-| | |
-| | |
+| Port number | Description                            |
+|:------------|:---------------------------------------|
+| 32000       | internal address where the server runs |
+|             |                                        |
 
 # Volumes
 
-| Volume path          | Description                                             |
-| :--------------------| :-------------------------------------------------------|
-| | |
-| | |
+| Volume path               | Description              |
+|:--------------------------|:-------------------------|
+| /nobody/.config/JetBrains | JetBrains settings       |
+| /nobody/.cache/JetBrains  | JetBrains chanching data |
+| /nobody/.local/           | Local data               |
 
 # Environment variables
 
-| Environment Variable | Description                                             |
-| :--------------------| :-------------------------------------------------------|
-| | |
-| | |
+| Environment Variable | Description                                                                                               |
+|:---------------------|:----------------------------------------------------------------------------------------------------------|
+| AUTH                 | true if USERNAME and PASSWORD should be enabled false will disable authentication by guacamole completely |
+| USERNAME             | The username for quacamole login (AUTH=true must be enabled for this to work)                             |
+| PASSWORD             | password for guacamole login (AUTH=true must be enabled for this to work)                                 |
+| USER_ID              | UID of the nobody user (default 99)                                                                       |
+| GROUP_ID             | GUID of the nobody user (default 100)                                                                     |
+
 
 # Base image configurable settings
 
@@ -41,6 +46,7 @@ for documentation on the base image.
 See `build.sh` for build instructions
 
 ---
+
 # License
 
     Copyright 2019 (c) Ivo Woltring
