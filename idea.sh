@@ -21,9 +21,11 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
         -e AUTH=${AUTH:-false}                                    \
         -e WIDTH=3440                                             \
         -e HEIGHT=1440                                            \
-        -v ${HOME}/dev/docker-intellij/:/project            \
-        -v "${HOME}/.m2:/root/.m2"                          \
-        -v ${HOME}/.config/ivonet/docker/IntelliJIdea2019.3:/nobody/.IntelliJIdea2019.3 \
+        -v ${HOME}/dev/docker-intellij/:/project                  \
+        -v "${HOME}/.m2:/root/.m2"                                \
+        -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/cache:/nobody/.cache/JetBrains \
+        -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/config:/nobody/.config/JetBrains \
+        -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/local:/nobody/.local \
         ivonet/intellij
 
     sleep $WAIT

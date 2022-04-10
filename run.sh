@@ -18,4 +18,5 @@ docker run                             \
     -v "${HOME}/.m2:/root/.m2"   \
     -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/cache:/nobody/.cache/JetBrains \
     -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/config:/nobody/.config/JetBrains \
+    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/local:/nobody/.local \
     ${HUB}/intellij
