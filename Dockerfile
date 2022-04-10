@@ -1,4 +1,4 @@
-FROM ivonet/ubuntu:18.04 AS builder
+FROM ivonet/ubuntu:20.04 AS builder
 
 #https://download-cf.jetbrains.com/idea/ideaIU-2019.1.2.tar.gz
 #https://download-cf.jetbrains.com/idea/ideaIU-2019.1.2-jbr11.tar.gz
@@ -8,11 +8,10 @@ FROM ivonet/ubuntu:18.04 AS builder
 #https://download-cf.jetbrains.com/idea/ideaIU-2019.3.2.tar.gz
 
 
-RUN /usr/bin/curl -s -L "https://download-cdn.jetbrains.com/idea/ideaIU-2021.3.2.tar.gz" | /bin/tar xz -C /opt/ \
+RUN /usr/bin/curl -s -L "https://download-cdn.jetbrains.com/idea/ideaIU-2021.3.3.tar.gz" | /bin/tar xz -C /opt/ \
  && mv -v /opt/idea* /opt/idea
-# && rm -rf /opt/idea/jre64
 
-FROM ivonet/x11webui:1.2
+FROM ivonet/x11webui:2.0-20.04
 
 COPY --from=builder /opt/idea /opt/idea
 
@@ -24,12 +23,12 @@ RUN apt-get update -qq -y \
  && apt-get install -y --no-install-recommends \
         openjdk-8-jdk \
         openjdk-11-jdk \
+        openjdk-17-jdk \
         git \
         maven \
         at-spi2-core \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
-# && ln -s /usr/lib/jvm/java-11-openjdk-amd64 /opt/idea/jre64
 
 COPY root/ /
 
