@@ -1,23 +1,12 @@
 FROM ivonet/ubuntu:20.04 AS builder
 
-#https://download-cf.jetbrains.com/idea/ideaIU-2019.1.2.tar.gz
-#https://download-cf.jetbrains.com/idea/ideaIU-2019.1.2-jbr11.tar.gz
-#https://download-cf.jetbrains.com/idea/ideaIU-2019.1.2-no-jbr.tar.gz
-#https://download-cf.jetbrains.com/idea/ideaIU-2019.1.3.tar.gz
-#https://download-cf.jetbrains.com/idea/ideaIU-2019.1.3-no-jbr.tar.gz
-#https://download-cf.jetbrains.com/idea/ideaIU-2019.3.2.tar.gz
 
-
-RUN /usr/bin/curl -s -L "https://download-cdn.jetbrains.com/idea/ideaIU-2021.3.3.tar.gz" | /bin/tar xz -C /opt/ \
+RUN /usr/bin/curl -s -L "https://download-cdn.jetbrains.com/idea/ideaIU-2022.1.tar.gz" | /bin/tar xz -C /opt/ \
  && mv -v /opt/idea* /opt/idea
 
 FROM ivonet/x11webui:2.0-20.04
 
 COPY --from=builder /opt/idea /opt/idea
-
-#Fix:
-#       Warning **: Error retrieving accessibility bus address:
-#https://www.raspberrypi.org/forums/viewtopic.php?t=196070
 
 RUN apt-get update -qq -y \
  && apt-get install -y --no-install-recommends \
