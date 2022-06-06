@@ -1,10 +1,11 @@
 FROM ivonet/ubuntu:20.04 AS builder
 
 
-RUN /usr/bin/curl -s -L "https://download-cdn.jetbrains.com/idea/ideaIU-2022.1.tar.gz" | /bin/tar xz -C /opt/ \
+RUN /usr/bin/curl -s -L "https://download.jetbrains.com/idea/ideaIU-2022.1.2.tar.gz" | /bin/tar xz -C /opt/ \
  && mv -v /opt/idea* /opt/idea
 
-FROM ivonet/x11webui:2.0-20.04
+#FROM ivonet/x11webui:2.2_22.04
+FROM ivonet/web-vnc:1.0_22.04
 
 COPY --from=builder /opt/idea /opt/idea
 
