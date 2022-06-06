@@ -26,11 +26,13 @@ ARG APP=intellij
 ARG USR=user
 ARG PWD=secret
 
-ENV IDE_HOME=/opt/idea                                  \
-    IDE_BIN_HOME=/opt/idea/bin                          \
-    VM_OPTIONS_FILE=/opt/idea/bin/idea.vmoptions        \
-    APPNAME=$APP                                        \
-    USERNAME=$USR                                       \
+ENV IDE_HOME=/opt/idea \
+    IDE_BIN_HOME=/opt/idea/bin \
+    VM_OPTIONS_FILE=/opt/idea/bin/idea.vmoptions \
+    JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/jre \
+    PATH=/usr/lib/jvm/java-1.11.0-openjdk-arm64/bin:$PATH \
+    APPNAME=$APP \
+    USERNAME=$USR \
     PASSWORD=$PWD
 
 WORKDIR /project
