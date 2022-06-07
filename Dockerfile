@@ -1,7 +1,7 @@
 FROM ivonet/ubuntu:20.04 AS builder
 
 
-RUN /usr/bin/curl -s -L "https://download.jetbrains.com/idea/ideaIU-2022.1.2.tar.gz" | /bin/tar xz -C /opt/ \
+RUN /usr/bin/curl -s -L "https://download.jetbrains.com/idea/ideaIU-2021.1.3.tar.gz" | /bin/tar xz -C /opt/ \
  && mv -v /opt/idea* /opt/idea
 
 #FROM ivonet/x11webui:2.2_22.04

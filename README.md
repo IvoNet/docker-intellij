@@ -63,3 +63,6 @@ See `build.sh` for build instructions
     See the License for the specific language governing permissions and
     limitations under the License.
 
+# License IntelliJ
+
+is of course fully their own license!
