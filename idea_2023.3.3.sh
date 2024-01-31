@@ -30,10 +30,10 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
     -e PGID=20 \
     -v ${HOME}/dev:/project \
     -v "${HOME}/.m2:/config/.m2" \
-    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2021.1.3/cache:/config/.cache/JetBrains \
-    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2021.1.3/config:/config/.config/JetBrains \
-    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2021.1.3/local:/config/.local/share/Jetbrains \
-    ivonet/intellij:2021.1.3
+    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/cache:/config/.cache/JetBrains \
+    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/config:/config/.config/JetBrains \
+    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/local:/config/.local/share/Jetbrains \
+    ivonet/intellij:2023.3.3
 
   sleep $WAIT
   open http://localhost:$PORT

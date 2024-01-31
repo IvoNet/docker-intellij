@@ -11,9 +11,6 @@ COPY --from=builder /opt/idea /opt/idea
 
 RUN apt-get update -qq -y \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    openjdk-8-jdk \
-    openjdk-11-jdk \
-    openjdk-17-jdk \
     openjdk-21-jdk \
     git \
     maven \
@@ -21,7 +18,18 @@ RUN apt-get update -qq -y \
     nodejs \
     at-spi2-core \
  && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+ && case $(arch) in \
+      x86_64 | amd64) \
+        ln -s /usr/lib/jvm/java-21-openjdk-amd64 /usr/lib/jvm/java-21-openjdk ;; \
+      aarch64 | arm64) \
+        ln -s /usr/lib/jvm/java-21-openjdk-arm64 /usr/lib/jvm/java-21-openjdk ;; \
+      *) \
+        echo "Unsupported architecture $(arch)" \
+        ;; \
+    esac \
+ && chmod -R 777 /config
+
 
 COPY root/ /
 
@@ -32,8 +40,8 @@ ARG PWD=secret
 ENV IDE_HOME=/opt/idea \
     IDE_BIN_HOME=/opt/idea/bin \
     VM_OPTIONS_FILE=/opt/idea/bin/idea.vmoptions \
-    JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64 \
-    PATH=/usr/lib/jvm/java-21-openjdk-amd64/bin:$PATH \
+    JAVA_HOME=/usr/lib/jvm/java-21-openjdk \
+    PATH=/usr/lib/jvm/java-21-openjdk/bin:$PATH \
     APPNAME=$APP \
     USERNAME=$USR \
     PASSWORD=$PWD

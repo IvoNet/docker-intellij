@@ -17,9 +17,9 @@ See `run.sh` and `intellij.sh` for examples on how to run the application.
 
 | Volume path               | Description            |
 |:--------------------------|:-----------------------|
-| /nobody/.config/JetBrains | JetBrains settings     |
-| /nobody/.cache/JetBrains  | JetBrains caching data |
-| /nobody/.local/           | Local data             |
+| /config/.config/JetBrains | JetBrains settings     |
+| /config/.cache/JetBrains  | JetBrains caching data |
+| /config/.local/           | Local data             |
 
 # Environment variables
 
@@ -31,6 +31,7 @@ See `run.sh` and `intellij.sh` for examples on how to run the application.
 | USER_ID              | UID of the nobody user (default 99)                                                                       |
 | GROUP_ID             | GUID of the nobody user (default 100)                                                                     |
 
+screen shortcuts: https://guacamole.apache.org/doc/gug/using-guacamole.html
 
 # Base image configurable settings
 
