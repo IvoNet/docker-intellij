@@ -21,7 +21,7 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
     -p 8001:8001 \
     -p 5901:5901 \
     -e AUTH=${AUTH:-false} \
-    -e JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64 \
+    -e JAVA_HOME=/usr/lib/jvm/java-21-openjdk \
     -e USERNAME=user \
     -e PASSWORD=s3cr3t \
     -e WIDTH=1920 \
@@ -30,13 +30,16 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
     -e PGID=20 \
     -v ${HOME}/dev:/project \
     -v "${HOME}/.m2:/config/.m2" \
-    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/cache:/config/.cache/JetBrains \
-    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/config:/config/.config/JetBrains \
-    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/local:/config/.local/share/Jetbrains \
-    ivonet/intellij:2023.3.3
-
+    -v $(pwd)/.tmp/config/:/config/ \
+    ivonet/intellij:latest
+#    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/config:/config/.config/JetBrains \
+#    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/local:/config/.local/share/Jetbrains \
   sleep $WAIT
   open http://localhost:$PORT
+
+  docker logs idea -f
+  docker rm -f idea
+
 else
   echo "Stopping idea..."
   docker stop $NAME

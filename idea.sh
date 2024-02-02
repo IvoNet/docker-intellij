@@ -25,13 +25,14 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
     -e HEIGHT=1440 \
     -v ${HOME}/dev:/project \
     -v "${HOME}/.m2:/root/.m2" \
-    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/cache:/nobody/.cache/JetBrains \
-    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/config:/nobody/.config/JetBrains \
-    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ/local:/nobody/.local \
-    ivonet/intellij:2021.1.3
+    -v $(pwd)/.tmp/config/:/config/ \
+    -v $(pwd)/root/startapp.sh:/startapp.sh  \
+    ivonet/intellij
 
   sleep $WAIT
   open http://localhost:$PORT
+  docker logs idea -f
+  docker rm -f idea
 else
   echo "Stopping idea..."
   docker stop $NAME

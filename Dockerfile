@@ -5,7 +5,7 @@ RUN /usr/bin/curl -s -L "https://download.jetbrains.com/idea/ideaIU-2023.3.3.tar
  && mv -v /opt/idea* /opt/idea
 
 #FROM ivonet/x11webui:2.2_22.04
-FROM ivonet/web-vnc:1.0.1_22.04
+FROM ivonet/web-vnc:1.1.0_22.04
 
 COPY --from=builder /opt/idea /opt/idea
 
@@ -28,7 +28,7 @@ RUN apt-get update -qq -y \
         echo "Unsupported architecture $(arch)" \
         ;; \
     esac \
- && chmod -R 777 /config
+ && chown -R abc:abc /config
 
 
 COPY root/ /
@@ -41,7 +41,7 @@ ENV IDE_HOME=/opt/idea \
     IDE_BIN_HOME=/opt/idea/bin \
     VM_OPTIONS_FILE=/opt/idea/bin/idea.vmoptions \
     JAVA_HOME=/usr/lib/jvm/java-21-openjdk \
-    PATH=/usr/lib/jvm/java-21-openjdk/bin:$PATH \
+    PATH=.:/usr/lib/jvm/java-21-openjdk/bin:$PATH \
     APPNAME=$APP \
     USERNAME=$USR \
     PASSWORD=$PWD

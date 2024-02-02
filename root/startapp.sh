@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # to make sure the application restarts when closed in the browser
-while true;
+while true
 do
-  cd /project
+  cd /project || true
   /opt/idea/bin/idea.sh
 done
