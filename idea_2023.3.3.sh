@@ -32,8 +32,6 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
     -v "${HOME}/.m2:/config/.m2" \
     -v $(pwd)/.tmp/config/:/config/ \
     ivonet/intellij:latest
-#    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/config:/config/.config/JetBrains \
-#    -v ${HOME}/.config/ivonet/docker/JetBrains/IntelliJ_2023.3.3/local:/config/.local/share/Jetbrains \
   sleep $WAIT
   open http://localhost:$PORT
 

@@ -26,8 +26,8 @@ if [ ! "$(docker ps -q -f name=$NAME)" ]; then
     -v ${HOME}/dev:/project \
     -v "${HOME}/.m2:/root/.m2" \
     -v $(pwd)/.tmp/config/:/config/ \
-    -v $(pwd)/root/startapp.sh:/startapp.sh  \
     ivonet/intellij
+#    -v $(pwd)/root/startapp.sh:/startapp.sh  \
 
   sleep $WAIT
   open http://localhost:$PORT
